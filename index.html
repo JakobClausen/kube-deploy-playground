@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jakob's DevHut</title>
+  <style>
+    :root {
+      --main-bg-color: #333;
+      --card-bg-color: #444;
+      --text-color: #fff;
+      --link-color: #007acc;
+      --accent-color: #4CAF50;
+      --font-stack: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-stack);
+      background: var(--main-bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0.5rem 0;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .card {
+      background: var(--card-bg-color);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .card h2 {
+      margin-top: 0;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: var(--link-color);
+      background-color: var(--accent-color);
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .links a:hover {
+      background-color: #3e8e41; /* Slightly darker green */
+    }
+
+    footer {
+      position: absolute;
+      bottom: 1rem;
+      font-size: 0.875rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Jakob's DevHut</h1>
+    <p>Welcome to my home server</p>
+  </header>
+
+  <div class="card">
+    <h2>Quick Links</h2>
+    <div class="links">
+      <a href="#">Project 1</a>
+      <a href="#">Project 2</a>
+      <a href="#">Tools & Utilities</a>
+      <a href="#">Docs</a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; <span id="year"></span> Jakob. All rights reserved.
+  </footer>
+
+  <script>
+    // Update year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
