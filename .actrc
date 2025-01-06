@@ -1,2 +1,2 @@
--P home-server-scale-set:catthehacker/ubuntu:act-20.04
 --container-architecture linux/amd64
+-P home-server-scale-set:catthehacker/ubuntu:act-20.04
