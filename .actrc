@@ -1,2 +1,2 @@
--P ubuntu-latest=ghcr.io/catthehacker/ubuntu:full-latest
+-P home-server-scale-set:catthehacker/ubuntu:act-20.04
 --container-architecture linux/amd64

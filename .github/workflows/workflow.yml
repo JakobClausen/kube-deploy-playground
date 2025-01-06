@@ -5,21 +5,18 @@ on:
   push:
 
 jobs:
-  setVersion:
+  set-version:
     runs-on: home-server-scale-set
+    outputs:
+      version: ${{ steps.set-git-version.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Install deps
-        uses: actions/setup-dotnet@v4
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v3.1.1
-        with:
-          versionSpec: "6.0.x"
-      - name: Determine Version
-        id: version_step
-        uses: gittools/actions/gitversion/execute@v3.1.1
-      - run: |
-          echo "FullSemVer (env.fullSemVer): ${{ env.fullSemVer }}"
+
+      - name: Set git version
+        id: set-git-version
+        run: |
+          version=$(docker run --rm -v $(pwd):/repo gittools/gitversion:5.12.0 /repo /showvariable SemVer)
+          echo "version=$version" >> $GITHUB_OUTPUT
