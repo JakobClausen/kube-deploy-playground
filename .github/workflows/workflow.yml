@@ -20,6 +20,20 @@ jobs:
         run: |
           version=$(docker run --rm -v $(pwd):/repo gittools/gitversion:5.12.0 /repo /showvariable SemVer)
           echo "version=$version" >> $GITHUB_OUTPUT
-      - name: Echo
+          echo "version=$version"
+  build:
+    needs: set-version
+    runs-on: home-server-scale-set
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Build image
+        id: build
         run: |
-          echo "version=${{ steps.set-git-version.outputs.version }}"
+          docker build -t docker-registry-service.docker-registry.svc.cluster.local:5000/test:${{ needs.set-version.outputs.version }} .
+      - name: Build push
+        id: push
+        run: |
+          docker push docker-registry-service.docker-registry.svc.cluster.local:5000/test:${{ needs.set-version.outputs.version }}
