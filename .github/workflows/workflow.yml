@@ -36,4 +36,5 @@ jobs:
       - name: Build push
         id: push
         run: |
+          export DOCKER_HOST=127.0.0.1:2376
           docker push docker-registry-service.docker-registry.svc.cluster.local:5000/test:${{ needs.set-version.outputs.version }}
